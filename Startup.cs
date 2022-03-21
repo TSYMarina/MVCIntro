@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MySql.Data.MySqlClient;
 
 namespace MVCIntro
 {
@@ -22,7 +24,16 @@ namespace MVCIntro
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
+                        
         {
+           services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bestbuy"));
+                conn.Open();
+                return conn;
+            });
+
+            services.AddTransient<IProductRepository, ProductRepository>(); // created an instance of the IProductRepository
             services.AddControllersWithViews();
         }
 
@@ -39,6 +50,8 @@ namespace MVCIntro
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            // place to add authentication and other items
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
