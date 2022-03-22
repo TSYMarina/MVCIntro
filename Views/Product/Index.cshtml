@@ -8,6 +8,12 @@
 </style>
 
 <h2>Products</h2>
+
+<div style="display: block">
+    <a href="/Product/InsertProduct/">Add a New Product to DB</a>
+</div>
+
+
 <table class="table">
     <tr>
         
@@ -23,16 +29,14 @@
     @foreach (var product in Model)
     {
      <tr>
-         
          <td><a target="_blank" href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
          <td>@product.Name</td>
          <td>@product.Price</td>
-         <td>@product.CategoryID</td>
+         <td style="text-align:center">@product.CategoryID</td>
          <td>@product.OnSale</td>
-         <td>@product.StockLevel</td>
+         <td style="text-align:center">@product.StockLevel</td>
          <td><img src=~/css/images/notInStockImg.png style=width:80px; height:auto /></td> 
      </tr>
-        
     }
 </table>
 
