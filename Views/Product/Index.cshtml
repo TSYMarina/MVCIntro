@@ -1,25 +1,36 @@
 ﻿@model IEnumerable<Product>
 
+<style>
+    body{
+        background-color: white;
+        color: navy;
+    }
+</style>
+
 <h2>Products</h2>
 <table class="table">
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category ID</th>
-        <th>On Sale</th>
-        <th>Stock Level</th>
+        
+        <th style="text-align:center">Product ID</th>
+        <th style="text-align:center">Name</th>
+        <th style="text-align:center">Price</th>
+        <th style="text-align:center">Category ID</th>
+        <th style="text-align:center">On Sale</th>
+        <th style="text-align:center">Number of Units in Stock</th>
+        <th style="text-align:center">Product Image</th>
     </tr>
     
     @foreach (var product in Model)
     {
      <tr>
-         <td><a href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>>
+         
+         <td><a target="_blank" href=/Product/ViewProduct/@product.ProductID>@product.ProductID</a></td>
          <td>@product.Name</td>
          <td>@product.Price</td>
          <td>@product.CategoryID</td>
          <td>@product.OnSale</td>
          <td>@product.StockLevel</td>
+         <td><img src=~/css/images/notInStockImg.png style=width:80px; height:auto /></td> 
      </tr>
         
     }

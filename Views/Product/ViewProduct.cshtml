@@ -1,15 +1,26 @@
 ﻿@model Product
 
-<h3>@Model.Name Information</h3>
+<style>
+        body{
+        background-color: white;
+        font: navy;
+    }
+</style>
+
+
+<h2>@Model.Name Information</h2>
 
 <table class="table">
     <tr>
-        <th>Product ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category ID</th>
-        <th>On Sale</th>
-        <th>StockLevel</th>
+        <th style="text-align:center">Product ID</th>
+        <th style="text-align:center">Name</th>
+        <th style="text-align:center">Price (USD)</th>
+        <th style="text-align:center">Category ID</th>
+        <th style="text-align:center">On Sale</th>
+        <th style="text-align:center">Stock Level (Units)</th>
+        
+
+
     </tr>
     <tr>
         <td>@Model.ProductID</td>
@@ -21,4 +32,10 @@
     </tr>
 
 </table>
+
+<div style="display: block">
+    <a href="/Product/UpdateProduct/@Model.ProductID">Update this Product</a>
+</div>
+
+
 
